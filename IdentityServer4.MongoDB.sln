@@ -19,6 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4.EntityFrame
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4.EntityFramework.IntegrationTests", "submodules\IdentityServer4.EntityFramework\test\IdentityServer4.EntityFramework.IntegrationTests\IdentityServer4.EntityFramework.IntegrationTests.csproj", "{82919535-9054-4318-9ADB-04437A6E2BC9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A49EBC68-C2D3-4155-8CC4-0F6002A66D7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5B50FAC3-6D63-4E01-9F1B-625041EDDE33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer4.MongoDB.IntegrationTests", "test\IdentityServer4.MongoDB.IntegrationTests\IdentityServer4.MongoDB.IntegrationTests.csproj", "{971337D5-B976-4B53-908C-B44FE4810454}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +47,10 @@ Global
 		{82919535-9054-4318-9ADB-04437A6E2BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82919535-9054-4318-9ADB-04437A6E2BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82919535-9054-4318-9ADB-04437A6E2BC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{971337D5-B976-4B53-908C-B44FE4810454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{971337D5-B976-4B53-908C-B44FE4810454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{971337D5-B976-4B53-908C-B44FE4810454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{971337D5-B976-4B53-908C-B44FE4810454}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +63,6 @@ Global
 		{F2FB36FD-307F-4A55-9B8D-7D84C5B54A02} = {3D2A7FFA-2D30-487B-AD74-B4E93E597F36}
 		{48507962-0E92-4E49-9273-F96C2710DBAD} = {F2FB36FD-307F-4A55-9B8D-7D84C5B54A02}
 		{82919535-9054-4318-9ADB-04437A6E2BC9} = {F2FB36FD-307F-4A55-9B8D-7D84C5B54A02}
+		{971337D5-B976-4B53-908C-B44FE4810454} = {5B50FAC3-6D63-4E01-9F1B-625041EDDE33}
 	EndGlobalSection
 EndGlobal
