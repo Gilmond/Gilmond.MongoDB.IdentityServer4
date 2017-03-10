@@ -1,0 +1,4 @@
+[submodule "submodules/IdentityServer4.EntityFramework"]
+	path = submodules/IdentityServer4.EntityFramework
+	url = https://github.com/IdentityServer/IdentityServer4.EntityFramework.git
+	branch = dev
