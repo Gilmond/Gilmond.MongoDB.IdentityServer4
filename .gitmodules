@@ -1,6 +1,3 @@
 [submodule "submodules/IdentityServer4.EntityFramework"]
 	path = submodules/IdentityServer4.EntityFramework
 	url = https://github.com/smudge202/IdentityServer4.EntityFramework
-[submodule "submodules/FluentDocker"]
-	path = submodules/FluentDocker
-	url = https://github.com/smudge202/FluentDocker.git
