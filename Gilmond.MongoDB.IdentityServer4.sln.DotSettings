@@ -1,3 +1,8 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=058FE098_002D345D_002D446C_002D8797_002DEBA7D896D506/@EntryIndexedValue">ExplicitlyExcluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=48507962_002D0E92_002D4E49_002D9273_002DF96C2710DBAD/@EntryIndexedValue">ExplicitlyExcluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=82919535_002D9054_002D4318_002D9ADB_002D04437A6E2BC9/@EntryIndexedValue">ExplicitlyExcluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=E32BA8FE_002DAEF7_002D40E7_002D856E_002DC15B9B5F7BDA/@EntryIndexedValue">ExplicitlyExcluded</s:String>
 	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">// Copyright (c) Brock Allen &amp; Dominick Baier. All rights reserved.&#xD;
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.</s:String></wpf:ResourceDictionary>
+// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=DB/@EntryIndexedValue">DB</s:String></wpf:ResourceDictionary>
