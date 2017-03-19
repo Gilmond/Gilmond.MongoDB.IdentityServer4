@@ -12,6 +12,8 @@ namespace Gilmond.MongoDB.IdentityServer4
 		public ClientsCollectionManager(CollectionResolver collectionResolver)
 		{
 			_collection = new Lazy<IMongoCollection<Client>>(collectionResolver.GetClientCollection);
+			// TODO: Implement config change handling
+			//optionsMonitor.OnChange(Update);
 		}
 
 		public Task AddClientAsync(Client client) 

@@ -1,9 +1,9 @@
-﻿using System;
-using IdentityServer4.Models;
+﻿using IdentityServer4.Models;
 using MongoDB.Bson.Serialization;
 
 namespace Gilmond.MongoDB.IdentityServer4
 {
+	// TODO: Make extensible
 	internal static class Mapper
 	{
 		public static void ConfigureModels()
