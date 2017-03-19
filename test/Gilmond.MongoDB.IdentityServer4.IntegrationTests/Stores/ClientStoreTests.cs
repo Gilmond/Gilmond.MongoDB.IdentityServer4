@@ -4,7 +4,7 @@ using IdentityServer4.Models;
 using IdentityServer4.Stores;
 using Xunit;
 
-namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests
+namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests.Stores
 {
 	public class ClientStoreTests
 	{
@@ -36,6 +36,20 @@ namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests
 				{
 					var client = await _clientStore.FindClientByIdAsync(Client.ClientId);
 					client.Should().NotBeNull(because: "client exists");
+				}
+
+
+				[Fact]
+				public async Task ThenClientIdIsPopulated()
+				{
+					var client = await _clientStore.FindClientByIdAsync(Client.ClientId);
+					client.ClientId.Should().Be(Client.ClientId, because: "client name was set");
+				}
+
+				[Fact]
+				public async Task ThenClientNameIsPopulated()
+				{
+					var client = await _clientStore.FindClientByIdAsync(Client.ClientId);
 					client.ClientName.Should().Be(Client.ClientName, because: "client name was set");
 				}
 			}
