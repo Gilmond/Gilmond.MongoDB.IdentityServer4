@@ -33,14 +33,12 @@ namespace Gilmond.MongoDB.IdentityServer4
 
 		private IMongoClient GetClient()
 		{
-			var builder = new MongoUrlBuilder
+			var settings = new MongoClientSettings
 			{
 				Server = new MongoServerAddress(_connection.Server.Host, _connection.Server.Port),
-				DatabaseName = _connection.DatabaseName,
-				Username = _connection.Username,
-				Password = _connection.Password
+				Credentials = new [] { MongoCredential.CreateCredential(_connection.AuthenticationDatabaseName, _connection.Username, _connection.Password) }
 			};
-			return new MongoClient(builder.ToMongoUrl());
+			return new MongoClient(settings);
 		}
 
 		private IMongoDatabase GetDatabase() 
@@ -56,7 +54,7 @@ namespace Gilmond.MongoDB.IdentityServer4
 						if (index.GetElement("name").Value.AsString == UniqueClientIdIndexName)
 							return collection;
 			var builder = new IndexKeysDefinitionBuilder<Client>();
-			await collection.Indexes.CreateOneAsync(builder.Hashed(x => x.ClientId), new CreateIndexOptions { Unique = true });
+			await collection.Indexes.CreateOneAsync(builder.Ascending(x => x.ClientId), new CreateIndexOptions { Unique = true, Name = UniqueClientIdIndexName });
 			return collection;
 		}
 	}
