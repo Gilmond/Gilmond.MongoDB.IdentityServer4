@@ -13,6 +13,7 @@ namespace Gilmond.MongoDB.IdentityServer4
 
 		private static void ConfigureClientModel(BsonClassMap<Client> map)
 		{
+			map.AutoMap();
 			map.MapIdProperty(x => x.ClientId);
 		}
 	}

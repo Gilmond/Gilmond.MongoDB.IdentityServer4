@@ -7,17 +7,14 @@ namespace Gilmond.MongoDB.IdentityServer4
 {
 	internal sealed class ClientsCollectionManager : ClientManager
 	{
-		private readonly Lazy<Task<IMongoCollection<Client>>> _collection;
+		private readonly Lazy<IMongoCollection<Client>> _collection;
 
 		public ClientsCollectionManager(CollectionResolver collectionResolver)
 		{
-			_collection = new Lazy<Task<IMongoCollection<Client>>>(collectionResolver.GetClientCollectionAsync);
+			_collection = new Lazy<IMongoCollection<Client>>(collectionResolver.GetClientCollection);
 		}
 
-		public async Task AddClientAsync(Client client)
-		{
-			var collection = await _collection.Value;
-			await collection.InsertOneAsync(client);
-		}
+		public Task AddClientAsync(Client client) 
+			=> _collection.Value.InsertOneAsync(client);
 	}
 }
