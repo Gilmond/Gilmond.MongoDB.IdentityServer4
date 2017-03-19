@@ -1,3 +1,6 @@
 [submodule "submodules/IdentityServer4.EntityFramework"]
 	path = submodules/IdentityServer4.EntityFramework
 	url = https://github.com/smudge202/IdentityServer4.EntityFramework
+[submodule "submodules/IdentityServer4"]
+	path = submodules/IdentityServer4
+	url = https://github.com/identityserver/identityserver4
