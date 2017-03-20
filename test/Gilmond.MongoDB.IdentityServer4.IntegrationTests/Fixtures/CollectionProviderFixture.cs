@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests
+namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests.Fixtures
 {
 	public class CollectionProviderFixture : IDisposable
 	{

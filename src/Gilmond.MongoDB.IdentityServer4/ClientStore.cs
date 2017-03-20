@@ -20,8 +20,8 @@ namespace Gilmond.MongoDB.IdentityServer4
 		public async Task<Client> FindClientByIdAsync(string clientId)
 		{
 			var clients = new List<Client>();
-			using (var cursor = await _collection.Value.FindAsync(Builders<Client>.Filter.Eq(x => x.ClientId, clientId)))
-				while (await cursor.MoveNextAsync())
+			using (var cursor = await _collection.Value.FindAsync(Builders<Client>.Filter.Eq(x => x.ClientId, clientId)).ConfigureAwait(false))
+				while (await cursor.MoveNextAsync().ConfigureAwait(false))
 					clients.AddRange(cursor.Current);
 			return clients.SingleOrDefault();
 		}

@@ -13,15 +13,23 @@ namespace Microsoft.Extensions.DependencyInjection
 			builder.Services.AddTransient<IClientStore, ClientStore>();
 			builder.Services.AddScoped<CollectionResolver, ConfigurationCollectionResolver>();
 			builder.Services.AddScoped<ClientManager, ClientsCollectionManager>();
+			builder.Services.AddTransient<IResourceStore, ResourceStore>();
 
 			builder.Services.Configure<MongoDatabaseConfigurationStoreOptions>(options =>
 			{
 				options.Collections.Client = "clients";
+				options.Collections.IdentityResource = "identities";
+				options.Collections.ApiResource = "apis";
 			});
 			builder.Services.Configure<MongoDatabaseConfigurationStoreOptions>(configuration);
 
 			Mapper.ConfigureModels();
 
+			return builder;
+		}
+
+		public static IIdentityServerBuilder AddOperationalStore(this IIdentityServerBuilder builder, IConfiguration configuration)
+		{
 			return builder;
 		}
 	}
