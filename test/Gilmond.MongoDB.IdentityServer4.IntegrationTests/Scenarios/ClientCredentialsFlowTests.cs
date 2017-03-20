@@ -35,7 +35,7 @@ namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests.Scenarios
 				public async Task ThenTokenResponseReceived()
 				{
 					var disco = await _fixture.Client.GetDiscoveryResponseAsync(_fixture.Server.BaseAddress).ConfigureAwait(false);
-					var client = new TokenClient(disco.TokenEndpoint, ClientCredentialsFlow.ClientId, ClientCredentialsFlow.ClientSecret);
+					var client = new TestServerTokenClient(disco.TokenEndpoint, ClientCredentialsFlow.ClientId, ClientCredentialsFlow.ClientSecret, _fixture.Client);
 					var tokenReponse = await client.RequestClientCredentialsAsync(ClientCredentialsFlow.Resource).ConfigureAwait(false);
 					tokenReponse.Should().NotBeNull(because: "host should return token response");
 					tokenReponse.IsError.Should().BeFalse(because: $"token response should not contain the error: {tokenReponse.Error}");
