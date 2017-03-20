@@ -4,3 +4,6 @@
 [submodule "submodules/IdentityServer4"]
 	path = submodules/IdentityServer4
 	url = https://github.com/identityserver/identityserver4
+[submodule "submodules/IdentityModel2"]
+	path = submodules/IdentityModel2
+	url = https://github.com/IdentityModel/IdentityModel2.git
