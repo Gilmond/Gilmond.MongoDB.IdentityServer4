@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Gilmond.MongoDB.IdentityServer4\Gilmond.MongoDB.IdentityServer4.csproj" />
+    <ProjectReference Include="..\..\submodules\IdentityServer4\src\IdentityServer4\IdentityServer4.csproj" />
   </ItemGroup>
 
   <ItemGroup>

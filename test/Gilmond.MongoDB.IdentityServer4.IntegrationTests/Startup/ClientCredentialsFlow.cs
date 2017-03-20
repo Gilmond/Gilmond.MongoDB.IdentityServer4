@@ -49,7 +49,7 @@ namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests.Startup
 			{
 				ClientId = ClientId,
 				AllowedGrantTypes = GrantTypes.ClientCredentials,
-				ClientSecrets = { new Secret(ClientSecret) },
+				ClientSecrets = { new Secret(ClientSecret.Sha512()) },
 				AllowedScopes = { Resource }
 			}).Wait();
 		}

@@ -4,6 +4,7 @@ using Gilmond.MongoDB.IdentityServer4.IntegrationTests.Fixtures;
 using Gilmond.MongoDB.IdentityServer4.IntegrationTests.Helpers;
 using Gilmond.MongoDB.IdentityServer4.IntegrationTests.Startup;
 using IdentityModel.Client;
+using IdentityServer4.Models;
 using Xunit;
 
 namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests.Scenarios
