@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
@@ -8,21 +9,31 @@ namespace Gilmond.MongoDB.IdentityServer4
 {
 	internal sealed class ResourceStore : IResourceStore
 	{
-		private readonly CollectionResolver _collections;
+		private readonly Lazy<IMongoCollection<ApiResource>> _apiResources;
+		private readonly Lazy<IMongoCollection<IdentityResource>> _identityResources;
 
-		public ResourceStore(CollectionResolver collections)
+		public ResourceStore(CollectionResolver collectionResolver)
 		{
-			_collections = collections;
+			_apiResources = new Lazy<IMongoCollection<ApiResource>>(collectionResolver.GetApiResourceCollection);
+			_identityResources = new Lazy<IMongoCollection<IdentityResource>>(collectionResolver.GetIdentityResourceCollection);
 		}
 
-		public Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeAsync(IEnumerable<string> scopeNames)
+		public async Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeAsync(IEnumerable<string> scopeNames)
 		{
-			throw new System.NotImplementedException();
+			var identities = new List<IdentityResource>();
+			using (var cursor = await _identityResources.Value.FindAsync(Builders<IdentityResource>.Filter.In(x => x.Name, scopeNames)).ConfigureAwait(false))
+				while (await cursor.MoveNextAsync().ConfigureAwait(false))
+					identities.AddRange(cursor.Current);
+			return identities;
 		}
 
-		public Task<IEnumerable<ApiResource>> FindApiResourcesByScopeAsync(IEnumerable<string> scopeNames)
+		public async Task<IEnumerable<ApiResource>> FindApiResourcesByScopeAsync(IEnumerable<string> scopeNames)
 		{
-			throw new System.NotImplementedException();
+			var apis = new List<ApiResource>();
+			using (var cursor = await _apiResources.Value.FindAsync(Builders<ApiResource>.Filter.In(x => x.Name, scopeNames)).ConfigureAwait(false))
+				while (await cursor.MoveNextAsync().ConfigureAwait(false))
+					apis.AddRange(cursor.Current);
+			return apis;
 		}
 
 		public Task<ApiResource> FindApiResourceAsync(string name)
@@ -33,11 +44,11 @@ namespace Gilmond.MongoDB.IdentityServer4
 		public async Task<Resources> GetAllResources()
 		{
 			var identities = new List<IdentityResource>();
-			using (var cursor = await _collections.GetIdentityResourceCollection().FindAsync(FilterDefinition<IdentityResource>.Empty).ConfigureAwait(false))
+			using (var cursor = await _identityResources.Value.FindAsync(FilterDefinition<IdentityResource>.Empty).ConfigureAwait(false))
 				while (await cursor.MoveNextAsync().ConfigureAwait(false))
 					identities.AddRange(cursor.Current);
 			var apis = new List<ApiResource>();
-			using (var cursor = await _collections.GetApiResourceCollection().FindAsync(FilterDefinition<ApiResource>.Empty).ConfigureAwait(false))
+			using (var cursor = await _apiResources.Value.FindAsync(FilterDefinition<ApiResource>.Empty).ConfigureAwait(false))
 				while (await cursor.MoveNextAsync().ConfigureAwait(false))
 					apis.AddRange(cursor.Current);
 			return new Resources(identities, apis);
