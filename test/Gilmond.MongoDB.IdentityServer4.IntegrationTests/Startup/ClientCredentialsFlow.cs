@@ -15,6 +15,8 @@ namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests.Startup
 		public static string Resource { get; } = Guid.NewGuid().ToString("N");
 
 		private readonly string _clientCollectionName = Guid.NewGuid().ToString("N");
+		private readonly string _apiResourceCollectionName = Guid.NewGuid().ToString("N");
+		private readonly string _identityResourceCollectionName = Guid.NewGuid().ToString("N");
 
 		public void ConfigureServices(IServiceCollection services)
 		{
@@ -32,6 +34,8 @@ namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests.Startup
 		private IEnumerable<KeyValuePair<string, string>> GetOverridenConfiguration()
 		{
 			yield return new KeyValuePair<string, string>("Collections:Client", _clientCollectionName);
+			yield return new KeyValuePair<string, string>("Collections:ApiResource", _apiResourceCollectionName);
+			yield return new KeyValuePair<string, string>("Collections:IdentityResource", _identityResourceCollectionName);
 		}
 
 		public void Configure(IApplicationBuilder app)
@@ -51,6 +55,11 @@ namespace Gilmond.MongoDB.IdentityServer4.IntegrationTests.Startup
 				AllowedGrantTypes = GrantTypes.ClientCredentials,
 				ClientSecrets = { new Secret(ClientSecret.Sha512()) },
 				AllowedScopes = { Resource }
+			}).Wait();
+			var resources = provider.GetRequiredService<ResourceManager>();
+			resources.AddResourceAsync(new ApiResource(Resource, "Test API")
+			{
+				ApiSecrets = {new Secret(ClientSecret.Sha512())}
 			}).Wait();
 		}
 	}

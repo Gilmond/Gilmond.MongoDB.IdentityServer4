@@ -10,10 +10,11 @@ namespace Microsoft.Extensions.DependencyInjection
 		public static IIdentityServerBuilder AddConfigurationStore(this IIdentityServerBuilder builder, IConfiguration configuration)
 		{
 			builder.Services.AddOptions();
-			builder.Services.AddTransient<IClientStore, ClientStore>();
 			builder.Services.AddScoped<CollectionResolver, ConfigurationCollectionResolver>();
+			builder.Services.AddTransient<IClientStore, ClientStore>();
 			builder.Services.AddScoped<ClientManager, ClientsCollectionManager>();
 			builder.Services.AddTransient<IResourceStore, ResourceStore>();
+			builder.Services.AddScoped<ResourceManager, ResourcesCollectionManager>();
 
 			builder.Services.Configure<MongoDatabaseConfigurationStoreOptions>(options =>
 			{
